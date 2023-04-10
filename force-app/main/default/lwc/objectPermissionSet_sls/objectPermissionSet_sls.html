@@ -1,0 +1,128 @@
+<template>
+	
+	<lightning-card>
+		
+
+		<!-- <template if:true={displayTable}>
+			<lightning-datatable class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+			hide-checkbox-column="true" columns={columns} data={sheet2List} key-field="S_No"></lightning-datatable>
+		</template> -->
+
+		<!-- Custom LWC Table -->
+		<template if:true={displayTable}>
+		<div id="myDiv" class="slds-scrollable_y" style="min-height:auto;max-height:500px;">
+			<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-no-row-hover data">
+				<thead>
+					<tr class="slds-line-height_reset">
+						
+						<th class="" scope="col">
+							<div class="slds-truncate" title="Name">S.No</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate" title="Name">Permission Set API Name</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate" title="Name">Object</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate" title="checkbox">Read</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate" title="checkbox">Create</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate" title="checkbox">Edit</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate" title="checkbox">Delete</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate" title="checkbox">View All</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate" title="checkbox">Modify All</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<template for:each={sheetValidData} for:item="obj" for:index="val">
+						<tr key={obj.S_No} class={obj.valid}>
+							<th scope="col">
+								<!-- <div>{obj.S_No}</div> -->
+                                <div>{obj.S_No}</div>
+							</th>
+							<th scope="col">
+								<div>{obj.Permission_Set_API_Name}</div>
+							</th>
+							<th scope="col">
+								<div>{obj.Object_API}</div>
+							</th>
+							<th scope="col">
+								<div>
+									
+									<lightning-input type="checkbox" value={val} name={obj.Read} checked={obj.Read}
+										data-check={obj.Read} data-key="singleSelectColumnCheckbox1"
+										onchange={handleSingleCheckboxSelectRead}>
+									</lightning-input>
+								</div>
+							</th>
+							<th scope="col">
+								<div>
+									
+									<lightning-input type="checkbox" value={val} name={obj.Create} checked={obj.Create}
+										data-check={obj.Create} data-key="singleSelectColumnCheckbox2"
+										onchange={handleSingleCheckboxSelectCreate}>
+									</lightning-input>
+								</div>
+							</th>
+							<th scope="col">
+								<div>
+									<lightning-input type="checkbox" value={val} name={obj.Edit} checked={obj.Edit}
+										data-check={obj.Edit} data-key="singleSelectColumnCheckbox3"
+										onchange={handleSingleCheckboxSelectEdit}>
+									</lightning-input>
+								</div>
+							</th>
+							<th scope="col">
+								<div>
+									<lightning-input type="checkbox" value={val} name={obj.Delete} checked={obj.Delete}
+										data-check={obj.Delete} data-key="singleSelectColumnCheckbox4"
+										onchange={handleSingleCheckboxSelectDelete}>
+									</lightning-input>
+								</div>
+							</th>
+							<th scope="col">
+								<div>
+									<lightning-input type="checkbox" value={val} name={obj.View_All} checked={obj.View_All}
+										data-check={obj.View_All} data-key="singleSelectColumnCheckbox5"
+										onchange={handleSingleCheckboxSelectViewAll}>
+									</lightning-input>
+								</div>
+							</th>
+							<th scope="col">
+								<div>
+									<lightning-input type="checkbox" value={val} name={obj.Modify_All} checked={obj.Modify_All}
+										data-check={obj.Modify_All} data-key="singleSelectColumnCheckbox6"
+										onchange={handleSingleCheckboxSelectModifyAll}>
+									</lightning-input>
+								</div>
+							</th>
+							
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</div>
+	
+		
+		<br>
+        
+		<!-- <template if:true={displayTable}> -->
+		<div class="slds-align_absolute-center">
+			<lightning-button label="Save" variant="brand" onclick={onSave}></lightning-button>
+			&nbsp; &nbsp;
+			<lightning-button label="Export Excel" variant="brand" onclick={exportWorksheet}></lightning-button>
+		</div>
+	</template>
+	</lightning-card>
+</template>
